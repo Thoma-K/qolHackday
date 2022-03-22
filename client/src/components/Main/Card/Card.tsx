@@ -18,25 +18,18 @@ interface Metric {
 }
 
 interface Props {
-  cityData: City
-  cityImage: string
-  input: string
+  cityData: City;
+  cityImage: string;
+  cityInput: string;
 }
 
-// const Card = ({cityData}: {cityData: Metric[]}) => {
-const Card = ({cityData, cityImage, input}: Props) => {
-
+const Card = ({cityData, cityImage, cityInput}: Props) => {
   const description = cityData.summary;
   const strippedDescription = description.replace(/(<([^>]+)>)/gi, "");
-  console.log('The Image =>',cityImage)
-  const citySplit = strippedDescription.split(" ");
-  
-  
   const cost = Math.round( cityData.categories[1].score_out_of_10 * 10 ) / 10;
   const travel = Math.round( cityData.categories[4].score_out_of_10 * 10 ) / 10;
   const internet = Math.round( cityData.categories[14].score_out_of_10 * 10 ) / 10;
-  const city = input;
-  console.log("The input at card --> ",input)
+  // const city = input;
 
 
   return(
@@ -47,7 +40,7 @@ const Card = ({cityData, cityImage, input}: Props) => {
         </div>
         <div className="city__description">
           {/* <span className="date">{cityData.categories[0].name}</span> */}
-          <h2>{city}</h2>
+          <h2>{cityInput}</h2>
           {strippedDescription}
         </div>
         <div className="city__footer">

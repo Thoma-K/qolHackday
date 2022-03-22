@@ -6,14 +6,10 @@ interface FormProps {
   // cityData: Metric[],
   setCityData: (data :any) => void;
   setCityImage: (data: string) =>void;
+  setCityInput: (data: string) =>void;
 }
-// interface Metric {
-//   color: string;
-//   name: string;
-//   score_out_of_10: number;
-// }
-const Form = ({ setCityData, setCityImage }: FormProps) => {
-  const [continent, setContinent] = useState<string>('');
+
+const Form = ({ setCityData, setCityImage, setCityInput }: FormProps) => {
   const [input, setInput] = useState<string>('');
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(event.target.value);
@@ -25,43 +21,27 @@ const Form = ({ setCityData, setCityImage }: FormProps) => {
   }, [input]);
   const handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    
     const formatInput = input.replace(/ /g, "_").toLowerCase();
-    
-    fetch(`/api/cities/images/${formatInput}`).then(
-      response => response.json()
-    ).then(
-      data => {
-        console.log('data for image', data);
-        if(data?.status === 404) {
-          alert('Page not found');
+
+    Promise.all([
+      fetch(`/api/cities/images/${formatInput}`),
+      fetch(`/api/cities/${formatInput}`)
+    ])
+    .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+    .then(([image, data]) => {
+      if(image === 404 || image === 404) {
+          alert('Image not found');
           return;
-        }
-        if(data?.status === 500) {
-          alert('Page 500');
-          return;
-        }
-        setCityImage(data);
       }
-    )
-    
-    fetch(`/api/cities/${formatInput}`).then(
-      response => response.json()
-    ).then(
-      data => {
-        console.log('data for city', data);
-        if(data?.status === 404) {
-          alert('Page not found');
-          return;
-        }
-        if(data?.status === 500) {
-          alert('Page 500');
-          return;
-        }
-        setCityData(data);
+      if(data?.status === 404 || data?.status === 500) {
+        alert('Page not found');
+        return;
       }
-    )
-    setInput('');
+      setCityData(data);
+      setCityImage(image);
+      console.log('input', input);
+      setCityInput(input)
+    })
   };
 
   return (

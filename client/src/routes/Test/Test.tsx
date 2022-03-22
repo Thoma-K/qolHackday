@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Map from '../Map/Map'
+import Maping from '../Map/Maping'
 
 function Test() {
 
@@ -27,7 +27,7 @@ function Test() {
 
   return (
     <section className='container__map'>
-      <Map />
+      <Maping />
     </section>
   )
 }
