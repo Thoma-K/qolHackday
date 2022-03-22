@@ -1,0 +1,96 @@
+.city--container{
+  margin: 0 2rem;
+  width: 100%;
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.city {
+  align-self:center;
+  display: grid;
+  width:70vw;
+  height:30rem;
+  grid-template-columns: 100%;
+  grid-template-rows: 1% 50% 49%;
+  grid-template-areas: "image" "text" "stats";
+
+ 
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background: white;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  font-family: roboto;
+  text-align: center;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin:30px;
+}
+
+.card-image {
+  grid-area: image;
+  object-fit:scale-down;
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  opacity: 0.5;
+}
+/* .city > img {
+  grid-area: image;
+  object-fit:fill;
+  width: 80%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+} */
+.card-text {
+  grid-area: text;
+  margin: 25px;
+}
+/* .card-text .date {
+  color: rgb(255, 7, 110);
+  font-size:13px;
+} */
+.card-text p {
+  color: grey;
+  font-size:15px;
+  font-weight: 300;
+}
+.card-text h2 {
+  margin-top:0px;
+  font-size:28px;
+}
+
+.card-stats {
+  grid-area: stats; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: rgb(255, 7, 110);
+}
+
+.card-stats .stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  color: white;
+  padding:10px;
+}
+.city:hover {
+  transform: scale(0.9);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+.image--container {
+  max-height: 40%;
+
+}
+img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  max-width: auto;
+}
+

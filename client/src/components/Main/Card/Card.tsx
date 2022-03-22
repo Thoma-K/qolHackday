@@ -1,7 +1,15 @@
 import React from 'react';
+import './Card.css';
 
 interface CardProps {
   cityData: Metric[]
+  cityImage: string
+}
+export interface City {
+  _links: {};
+  categories: Metric[];
+  summary: string;
+  teleport_city_score: number;
 }
 interface Metric {
   color: string;
@@ -9,38 +17,55 @@ interface Metric {
   score_out_of_10: number;
 }
 
-const Card = ({cityData}: {cityData: Metric[]}) => {
-  console.log('Card Section =>',cityData[0].name);
- // console.log('score_out_of_10', cityData[0].score_out_of_10)
-  // Display city data
-  // const sum = cityData.reduce((a, b) => a.score_out_of_10 + b.score_out_of_10, 0)
+interface Props {
+  cityData: City
+  cityImage: string
+  input: string
+}
 
-  // I want to add the Card when useEffect at form activates so that it will take the values of the city
+// const Card = ({cityData}: {cityData: Metric[]}) => {
+const Card = ({cityData, cityImage, input}: Props) => {
+
+  const description = cityData.summary;
+  const strippedDescription = description.replace(/(<([^>]+)>)/gi, "");
+  console.log('The Image =>',cityImage)
+  const citySplit = strippedDescription.split(" ");
+  
+  
+  const cost = Math.round( cityData.categories[1].score_out_of_10 * 10 ) / 10;
+  const travel = Math.round( cityData.categories[4].score_out_of_10 * 10 ) / 10;
+  const internet = Math.round( cityData.categories[14].score_out_of_10 * 10 ) / 10;
+  const city = input;
+  console.log("The input at card --> ",input)
 
 
   return(
-    <article className='city'>
-      <div className="card-image"></div>
-      <div className="card-text">
-        <span className="date">{cityData[0].name}</span>
-        <h2>Post One</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
-      </div>
-      <div className="card-stats">
-        <div className="stat">
-          {/* <div className="value">{cityData[1].score_out_of_10 | 5}</div> */}
-          <div className="type">Cost of Living</div>
+    <section className='city--container'>
+      <article className='city'>
+        <div className='image--container'>
+          <img className="card-image" src={cityImage}></img>
         </div>
-        <div className="stat border">
-          {/* <div className="value">{cityData[4].score_out_of_10 | 5}</div> */}
-          <div className="type">Travel Connectivity</div>
+        <div className="city__description">
+          {/* <span className="date">{cityData.categories[0].name}</span> */}
+          <h2>{city}</h2>
+          {strippedDescription}
         </div>
-        <div className="stat">
-          {/* <div className="value">{cityData[14].score_out_of_10 | 5}</div> */}
-          <div className="type">Internet Access</div>
+        <div className="city__footer">
+          <div className="city__footer__living">
+            <div className="type">Cost of Living</div><br></br>
+            <div className="value">{cost}/10</div>
+          </div>
+          <div className="city__footer__travel">
+            <div className="type">Travel Connectivity</div><br></br>
+            <div className="value">{travel}/10</div>
+          </div>
+          <div className="city__footer__internet">
+            <div className="type">Internet Access</div><br></br>
+            <div className="value">{internet}/10</div>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </section>
   )
 }
 

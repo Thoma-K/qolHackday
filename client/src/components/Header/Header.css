@@ -1,0 +1,28 @@
+.head {
+  color: bisque;
+  padding: 0.6rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+nav {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  background-color: white;
+  border-radius: 8px;
+  padding: 0.3rem 1rem;
+  margin: 0 0.5rem;
+}
