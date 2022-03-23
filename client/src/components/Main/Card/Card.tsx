@@ -33,14 +33,14 @@ const Card = ({cityData, cityImage, cityInput}: Props) => {
 
 
   return(
-    <section className='city--container'>
+    <section className='city__container'>
       <article className='city'>
         <div className='image--container'>
-          <img className="card-image" src={cityImage}></img>
+          <img className="city__image" src={cityImage}></img>
         </div>
         <div className="city__description">
           {/* <span className="date">{cityData.categories[0].name}</span> */}
-          <h2>{cityInput}</h2>
+          <h2 className='city__title'>{cityInput}</h2>
           {strippedDescription}
         </div>
         <div className="city__footer">

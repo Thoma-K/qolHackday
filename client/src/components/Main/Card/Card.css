@@ -1,4 +1,4 @@
-.city--container {
+.city__container {
   display: flex;
   justify-content: center;
 }
@@ -13,11 +13,21 @@
   display: flex;
   flex-direction: column;
 }
-img {
+.image--container {
+  display: flex;
+  justify-content: center;
+}
+.city__image {
+  align-self: center;
   border-radius: 10px;
   display: block;
   max-width: 100%;
   max-height: 100%;
+}
+
+.city__title {
+  align-self: center;
+  text-align: center;
 }
 
 .city__par {

@@ -17,6 +17,7 @@
   align-self: center;
   position: center;
   --field-padding: 12px;
+  border-radius: 10px;
 }
 /* .form__field input {
   align-self: center;
@@ -49,7 +50,7 @@
 
 #btn {
   color:var(--linen);
-  background-color: var(--emerald);
+  background-color: rgb(189, 87, 87);
   font-size: 1.5rem;
   height: 2.6rem;
   width:80%;

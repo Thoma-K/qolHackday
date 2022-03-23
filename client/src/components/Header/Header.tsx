@@ -11,7 +11,7 @@ const Header = () => {
           <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
         </li>
         <li>
-          <Link to="/test" style={{ textDecoration: 'none', color: 'black' }}>Test</Link>
+          <Link to="/test" style={{ textDecoration: 'none', color: 'black' }}>Map</Link>
         </li> 
       </nav>
       
